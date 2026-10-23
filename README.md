@@ -1,4 +1,4 @@
-# The Internship Diaries
+# My Internship Diary
 
 A personal internship journal website for **Rojen Oliveros** — documenting weekly stories, photographs, and reflections from an IT internship at **AECC Study Abroad Consultants (Davao City)**.
 

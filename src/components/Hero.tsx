@@ -18,7 +18,7 @@ export default function Hero({ imageSrc, imageAlt }: HeroProps) {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[center_42%]"
+          className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-ivory via-ivory/88 to-ivory/35" />
         <div className="absolute inset-0 bg-gradient-to-t from-ivory via-transparent to-ivory/40" />
@@ -27,7 +27,7 @@ export default function Hero({ imageSrc, imageAlt }: HeroProps) {
       <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-center px-5 py-24 sm:px-8 lg:py-28">
         <div className="max-w-xl animate-fade-up space-y-6">
           <p className="font-serif text-sm italic tracking-[0.2em] text-mauve uppercase">
-            The Internship Diaries
+            {siteConfig.title}
           </p>
           <h1 className="font-serif text-4xl leading-[1.1] text-charcoal sm:text-5xl lg:text-6xl">
             {siteConfig.tagline}

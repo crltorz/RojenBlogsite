@@ -44,7 +44,7 @@ export default function Navbar() {
           onClick={closeMenu}
           className="font-serif text-xl tracking-tight text-charcoal transition hover:text-mauve sm:text-2xl"
         >
-          The Internship Diaries
+          {siteConfig.title}
         </Link>
 
         <nav

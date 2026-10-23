@@ -35,8 +35,8 @@ export default function HomePage() {
   return (
     <>
       <Hero
-        imageSrc="/images/internship/photo-48.jpg"
-        imageAlt="Rojen Oliveros holding her AECC Certificate of Completion with teammates"
+        imageSrc="/images/internship/hero-team.jpg"
+        imageAlt="Rojen Oliveros with AECC teammates during the internship"
       />
 
       <section

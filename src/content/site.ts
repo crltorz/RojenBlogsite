@@ -1,5 +1,5 @@
 export const siteConfig = {
-  title: "The Internship Diaries",
+  title: "My Internship Diary",
   owner: "Rojen Oliveros",
   fullName: "Rojen S. Oliveros",
   position: "IT Intern",
