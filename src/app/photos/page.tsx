@@ -22,9 +22,8 @@ export default function PhotosPage() {
         />
       </ScrollReveal>
 
-      <ScrollReveal>
-        <PhotoGrid photos={photos} />
-      </ScrollReveal>
+      {/* Do not wrap the grid in ScrollReveal — tall content stayed opacity:0 */}
+      <PhotoGrid photos={photos} />
     </div>
   );
 }

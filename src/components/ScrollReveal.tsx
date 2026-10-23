@@ -28,6 +28,8 @@ export default function ScrollReveal({
       return;
     }
 
+    // threshold 0: fire as soon as any pixel is visible.
+    // Tall blocks (like the photo grid) never reach higher thresholds.
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -37,10 +39,20 @@ export default function ScrollReveal({
           observer.unobserve(node);
         }
       },
-      { threshold: 0.16, rootMargin: "0px 0px -40px 0px" },
+      { threshold: 0, rootMargin: "0px 0px -8% 0px" },
     );
 
     observer.observe(node);
+
+    // Fallback if already in view but observer missed the first paint
+    const rect = node.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      window.setTimeout(() => {
+        node.classList.add("is-visible");
+        observer.unobserve(node);
+      }, delayMs);
+    }
+
     return () => observer.disconnect();
   }, [delayMs]);
 

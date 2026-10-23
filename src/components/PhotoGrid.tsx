@@ -37,7 +37,10 @@ export default function PhotoGrid({ photos }: PhotoGridProps) {
               type="button"
               role="tab"
               aria-selected={selected}
-              onClick={() => setCategory(item)}
+              onClick={() => {
+                setCategory(item);
+                setActiveIndex(null);
+              }}
               className={`rounded-full border px-4 py-2 text-sm transition ${
                 selected
                   ? "border-mauve bg-blush text-charcoal"
@@ -56,14 +59,14 @@ export default function PhotoGrid({ photos }: PhotoGridProps) {
         {category !== "All" ? ` in ${category}` : ""}.
       </p>
 
-      <div className="photo-masonry mt-8">
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((photo, index) => {
           const portrait = photo.height >= photo.width;
           return (
             <button
               key={photo.id}
               type="button"
-              className={`group relative block w-full overflow-hidden rounded-2xl border border-dusty/40 bg-blush/40 text-left transition hover:border-mauve focus-visible:outline-offset-4 ${
+              className={`group relative block w-full overflow-hidden rounded-2xl border border-dusty/40 bg-blush/50 text-left shadow-sm transition hover:border-mauve focus-visible:outline-offset-4 ${
                 portrait ? "aspect-[3/4]" : "aspect-[4/3]"
               }`}
               onClick={() => setActiveIndex(index)}
@@ -76,7 +79,7 @@ export default function PhotoGrid({ photos }: PhotoGridProps) {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition duration-500 group-hover:scale-[1.03]"
               />
-              <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-transparent px-4 pt-12 pb-3 opacity-100 sm:opacity-0 sm:transition sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100">
+              <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/75 via-charcoal/25 to-transparent px-4 pt-12 pb-3">
                 <span className="block font-serif text-sm italic text-ivory">
                   {photo.caption}
                 </span>
