@@ -3,17 +3,16 @@ import JournalCard from "@/components/JournalCard";
 import JournalTimeline from "@/components/JournalTimeline";
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionHeading from "@/components/SectionHeading";
-import { getAllEntries, getPublishedEntries } from "@/content/journal";
+import { getPublishedEntries } from "@/content/journal";
 
 export const metadata: Metadata = {
   title: "My Journey",
   description:
-    "Weekly internship journal entries by Rojen Oliveros at AECC Davao.",
+    "Weekly internship journal entries by Rojen Oliveros at AECC Davao — June 15 to August 12, 2026.",
 };
 
 export default function JourneyPage() {
-  const published = getPublishedEntries();
-  const allEntries = getAllEntries();
+  const entries = getPublishedEntries();
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
@@ -21,31 +20,41 @@ export default function JourneyPage() {
         <SectionHeading
           eyebrow="My Journey"
           title="Weekly Internship Journal"
-          description="A chronological diary of my internship weeks — starting with documented accomplishments, with editable templates ready for the weeks still being written."
+          description="Nine weeks at AECC Davao — from June 15 to August 12, 2026. Follow the full timeline below, or open any week to read the story."
           className="mb-12 max-w-3xl"
         />
       </ScrollReveal>
 
-      <div className="grid gap-6">
-        {published.map((entry, index) => (
-          <ScrollReveal key={entry.id} delayMs={index * 70}>
-            <JournalCard entry={entry} featured={index === 0} />
-          </ScrollReveal>
-        ))}
-      </div>
-
-      <section className="mt-20">
+      <section className="mb-20">
         <ScrollReveal>
           <SectionHeading
             eyebrow="Timeline"
-            title="The weeks at a glance"
-            description="Published entries open as full articles. Unpublished weeks are templates waiting for real dates and stories."
+            title="June 15 – August 12, 2026"
+            description="Every week of my internship, in order — from New Beginnings to Closing the Chapter."
             className="mb-10"
           />
         </ScrollReveal>
         <ScrollReveal>
-          <JournalTimeline entries={allEntries} />
+          <JournalTimeline entries={entries} />
         </ScrollReveal>
+      </section>
+
+      <section>
+        <ScrollReveal>
+          <SectionHeading
+            eyebrow="Journal entries"
+            title="Read each week"
+            description="Open a full article for activities, challenges, lessons, and photographs from that week."
+            className="mb-10"
+          />
+        </ScrollReveal>
+        <div className="grid gap-6">
+          {entries.map((entry, index) => (
+            <ScrollReveal key={entry.id} delayMs={Math.min(index, 4) * 50}>
+              <JournalCard entry={entry} featured={index === 0} />
+            </ScrollReveal>
+          ))}
+        </div>
       </section>
     </div>
   );

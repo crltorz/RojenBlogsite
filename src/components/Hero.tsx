@@ -18,7 +18,7 @@ export default function Hero({ imageSrc, imageAlt }: HeroProps) {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[center_28%]"
+          className="object-cover object-[center_42%]"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-ivory via-ivory/88 to-ivory/35" />
         <div className="absolute inset-0 bg-gradient-to-t from-ivory via-transparent to-ivory/40" />

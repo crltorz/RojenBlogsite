@@ -57,29 +57,33 @@ export default function PhotoGrid({ photos }: PhotoGridProps) {
       </p>
 
       <div className="photo-masonry mt-8">
-        {filtered.map((photo, index) => (
-          <button
-            key={photo.id}
-            type="button"
-            className="group relative block w-full overflow-hidden rounded-2xl border border-dusty/40 bg-blush/30 text-left transition hover:border-mauve focus-visible:outline-offset-4"
-            onClick={() => setActiveIndex(index)}
-            aria-label={`Open photograph: ${photo.caption}`}
-          >
-            <Image
-              src={photo.src}
-              alt={photo.alt}
-              width={photo.width}
-              height={photo.height}
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="h-auto w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-            />
-            <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-transparent px-4 pt-12 pb-3 opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100">
-              <span className="block font-serif text-sm italic text-ivory">
-                {photo.caption}
+        {filtered.map((photo, index) => {
+          const portrait = photo.height >= photo.width;
+          return (
+            <button
+              key={photo.id}
+              type="button"
+              className={`group relative block w-full overflow-hidden rounded-2xl border border-dusty/40 bg-blush/40 text-left transition hover:border-mauve focus-visible:outline-offset-4 ${
+                portrait ? "aspect-[3/4]" : "aspect-[4/3]"
+              }`}
+              onClick={() => setActiveIndex(index)}
+              aria-label={`Open photograph: ${photo.caption}`}
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover transition duration-500 group-hover:scale-[1.03]"
+              />
+              <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-transparent px-4 pt-12 pb-3 opacity-100 sm:opacity-0 sm:transition sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100">
+                <span className="block font-serif text-sm italic text-ivory">
+                  {photo.caption}
+                </span>
               </span>
-            </span>
-          </button>
-        ))}
+            </button>
+          );
+        })}
       </div>
 
       {filtered.length === 0 ? (

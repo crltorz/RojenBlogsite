@@ -24,14 +24,19 @@ const growthHighlights = [
 ];
 
 export default function HomePage() {
-  const featuredEntries = getPublishedEntries().slice(0, 3);
+  const allEntries = getPublishedEntries();
+  const featuredEntries = [
+    allEntries.find((entry) => entry.weekNumber === 1),
+    allEntries.find((entry) => entry.weekNumber === 8),
+    allEntries.find((entry) => entry.weekNumber === 9),
+  ].filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
   const featuredPhotos = getFeaturedPhotos(6);
 
   return (
     <>
       <Hero
-        imageSrc="/images/internship/photo-02.jpg"
-        imageAlt="Rojen smiling during an outdoor moment from her AECC internship"
+        imageSrc="/images/internship/photo-48.jpg"
+        imageAlt="Rojen Oliveros holding her AECC Certificate of Completion with teammates"
       />
 
       <section
@@ -73,7 +78,7 @@ export default function HomePage() {
               <SectionHeading
                 eyebrow="Journal"
                 title="Featured weekly entries"
-                description="Start with Week 1 — New Beginnings. More weeks can be added as your reports and photographs are ready."
+                description="Nine weeks from June 15 to August 12, 2026 — here are the opening, the Global Education Fair, and the closing chapter."
               />
               <Link
                 href="/journey"

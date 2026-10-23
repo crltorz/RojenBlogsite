@@ -26,6 +26,7 @@
 
 # original photo dumps / narrative source files (web images live in public/)
 /Pictures/
+/_pdf_pages/
 
 # debug
 npm-debug.log*
