@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# original photo dumps / narrative source files (web images live in public/)
+/Pictures/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
